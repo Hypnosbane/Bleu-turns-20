@@ -208,9 +208,25 @@ function createTimelineEntry(entry, index) {
     const photoPlaceholder = document.createElement('div');
     photoPlaceholder.className = 'photo-placeholder';
     photoPlaceholder.innerHTML = `
-        <div class="photo-icon">📸</div>
-        <div class="photo-text">Click here to add your favorite photo from ${entry.age === 0 ? 'this special day' : 'age ' + entry.age}!</div>
+        <img src="images/birthday-${entry.age}.jpg" alt="Birthday photo age ${entry.age}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
     `;
+    
+    const messageArea = document.createElement('div');
+    messageArea.className = 'message-area';
+    messageArea.textContent = `Add your special memory or message for ${entry.age === 0 ? 'her birth' : 'age ' + entry.age} here...`;
+        
+    content.appendChild(yearBadge);
+    content.appendChild(ageDisplay);
+    content.appendChild(dateDisplay);
+    content.appendChild(photoPlaceholder);
+    content.appendChild(messageArea);
+    
+    entryDiv.appendChild(marker);
+    entryDiv.appendChild(content);
+    
+    return entryDiv;
+}
+
     
     const messageArea = document.createElement('div');
     messageArea.className = 'message-area';
