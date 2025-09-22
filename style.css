@@ -848,15 +848,16 @@ select.form-control {
 
 .lock-title {
     font-size: var(--font-size-4xl);
-    color: var(--color-text);
+    color: #6A0572; /* Dark pastel purple */
     margin-bottom: var(--space-16);
     font-weight: 600;
 }
 
 .lock-subtitle {
     font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
+    color: #D147A3; /* Medium pink */
     margin-bottom: var(--space-24);
+
 }
 
 .password-form {
