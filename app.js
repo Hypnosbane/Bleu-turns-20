@@ -2,30 +2,32 @@
 
 // Application data
 const appData = {
-    birthDate: "2006-04-09",
+    birthDate: "2005-10-06",
     password: "magic123",
     timeline: [
-        {"age": 19, "date": "April 9, 2025", "year": 2025},
-        {"age": 18, "date": "April 9, 2024", "year": 2024},
-        {"age": 17, "date": "April 9, 2023", "year": 2023},
-        {"age": 16, "date": "April 9, 2022", "year": 2022},
-        {"age": 15, "date": "April 9, 2021", "year": 2021},
-        {"age": 14, "date": "April 9, 2020", "year": 2020},
-        {"age": 13, "date": "April 9, 2019", "year": 2019},
-        {"age": 12, "date": "April 9, 2018", "year": 2018},
-        {"age": 11, "date": "April 9, 2017", "year": 2017},
-        {"age": 10, "date": "April 9, 2016", "year": 2016},
-        {"age": 9, "date": "April 9, 2015", "year": 2015},
-        {"age": 8, "date": "April 9, 2014", "year": 2014},
-        {"age": 7, "date": "April 9, 2013", "year": 2013},
-        {"age": 6, "date": "April 9, 2012", "year": 2012},
-        {"age": 5, "date": "April 9, 2011", "year": 2011},
-        {"age": 4, "date": "April 9, 2010", "year": 2010},
-        {"age": 3, "date": "April 9, 2009", "year": 2009},
-        {"age": 2, "date": "April 9, 2008", "year": 2008},
-        {"age": 1, "date": "April 9, 2007", "year": 2007},
-        {"age": 0, "date": "April 9, 2006", "year": 2006}
-    ]
+    {"age": 20, "date": "October 6, 2025", "year": 2025},
+    {"age": 19, "date": "October 6, 2024", "year": 2024},
+    {"age": 18, "date": "October 6, 2023", "year": 2023},
+    {"age": 17, "date": "October 6, 2022", "year": 2022},
+    {"age": 16, "date": "October 6, 2021", "year": 2021},
+    {"age": 15, "date": "October 6, 2020", "year": 2020},
+    {"age": 14, "date": "October 6, 2019", "year": 2019},
+    {"age": 13, "date": "October 6, 2018", "year": 2018},
+    {"age": 12, "date": "October 6, 2017", "year": 2017},
+    {"age": 11, "date": "October 6, 2016", "year": 2016},
+    {"age": 10, "date": "October 6, 2015", "year": 2015},
+    {"age": 9, "date": "October 6, 2014", "year": 2014},
+    {"age": 8, "date": "October 6, 2013", "year": 2013},
+    {"age": 7, "date": "October 6, 2012", "year": 2012},
+    {"age": 6, "date": "October 6, 2011", "year": 2011},
+    {"age": 5, "date": "October 6, 2010", "year": 2010},
+    {"age": 4, "date": "October 6, 2009", "year": 2009},
+    {"age": 3, "date": "October 6, 2008", "year": 2008},
+    {"age": 2, "date": "October 6, 2007", "year": 2007},
+    {"age": 1, "date": "October 6, 2006", "year": 2006},
+    {"age": 0, "date": "October 6, 2005", "year": 2005}
+        ]
+
 };
 
 // Global variables
