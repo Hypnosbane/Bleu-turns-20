@@ -206,9 +206,18 @@ function createTimelineEntry(entry, index) {
 
     const photoPlaceholder = document.createElement('div');
     photoPlaceholder.className = 'photo-placeholder';
-    photoPlaceholder.innerHTML = `
-        <img src="images/birthday-${entry.age}.jpeg" alt="Birthday photo age ${entry.age}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
-    `;
+
+    if (entry.age === 20) {
+        // For 20th birthday, display message instead of image
+        photoPlaceholder.textContent = '🎉 Happy 20th Birthday! 🎉';
+        photoPlaceholder.style.fontStyle = 'italic';
+        photoPlaceholder.style.textAlign = 'center';
+        photoPlaceholder.style.padding = '20px';
+    } else {
+        photoPlaceholder.innerHTML = `
+            <img src="images/birthday-${entry.age}.jpeg" alt="Birthday photo age ${entry.age}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+        `;
+    }
 
     const messageArea = document.createElement('div');
     messageArea.className = 'message-area';
