@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     updateAgeCounter();
     generateTimeline();
-    
+
     // Update age counter every hour
     setInterval(updateAgeCounter, 3600000);
-    
+
     // Add CSS animations
     addCustomStyles();
 });
@@ -62,7 +62,7 @@ function setupEventListeners() {
     if (passwordForm) {
         passwordForm.addEventListener('submit', handlePasswordSubmit);
     }
-    
+
     if (passwordInput) {
         passwordInput.addEventListener('input', clearError);
         passwordInput.addEventListener('keypress', function(e) {
@@ -76,11 +76,11 @@ function setupEventListeners() {
 // Handle password form submission
 function handlePasswordSubmit(e) {
     e.preventDefault();
-    
+
     if (!passwordInput) return;
-    
+
     const password = passwordInput.value.trim();
-    
+
     if (password === appData.password) {
         clearError();
         unlockSite();
@@ -114,24 +114,24 @@ function showError(message) {
 // Unlock the site with smooth transition
 function unlockSite() {
     if (!lockScreen || !timelinePage) return;
-    
+
     // Add transition styles
     lockScreen.style.transition = 'all 0.8s ease-in-out';
     timelinePage.style.transition = 'all 0.8s ease-in-out';
-    
+
     // Hide lock screen
     lockScreen.style.transform = 'translateY(-100%)';
     lockScreen.style.opacity = '0';
-    
+
     setTimeout(() => {
         lockScreen.classList.add('hidden');
         lockScreen.style.display = 'none';
-        
+
         timelinePage.classList.remove('hidden');
         timelinePage.style.display = 'block';
         timelinePage.style.opacity = '0';
         timelinePage.style.transform = 'translateY(20px)';
-        
+
         setTimeout(() => {
             timelinePage.style.opacity = '1';
             timelinePage.style.transform = 'translateY(0)';
@@ -143,27 +143,27 @@ function unlockSite() {
 // Calculate and update age counter
 function updateAgeCounter() {
     if (!ageCounter) return;
-    
+
     const birthDate = new Date(appData.birthDate);
     const now = new Date();
-    
+
     let years = now.getFullYear() - birthDate.getFullYear();
     let months = now.getMonth() - birthDate.getMonth();
     let days = now.getDate() - birthDate.getDate();
-    
+
     // Adjust for negative days
     if (days < 0) {
         months--;
         const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
         days += lastMonth.getDate();
     }
-    
+
     // Adjust for negative months
     if (months < 0) {
         years--;
         months += 12;
     }
-    
+
     const ageText = `${years} years, ${months} months, and ${days} days`;
     ageCounter.textContent = ageText;
 }
@@ -171,9 +171,9 @@ function updateAgeCounter() {
 // Generate timeline entries
 function generateTimeline() {
     if (!timeline) return;
-    
+
     timeline.innerHTML = '';
-    
+
     appData.timeline.forEach((entry, index) => {
         const timelineEntry = createTimelineEntry(entry, index);
         timeline.appendChild(timelineEntry);
@@ -185,49 +185,49 @@ function createTimelineEntry(entry, index) {
     const entryDiv = document.createElement('div');
     entryDiv.className = 'timeline-entry';
     entryDiv.style.animationDelay = `${index * 0.1}s`;
-    
+
     const marker = document.createElement('div');
     marker.className = 'timeline-marker';
-    
+
     const content = document.createElement('div');
     content.className = 'timeline-content';
-    
+
     const yearBadge = document.createElement('span');
     yearBadge.className = 'year-badge';
     yearBadge.textContent = entry.year;
-    
+
     const ageDisplay = document.createElement('h3');
     ageDisplay.className = 'age-display';
     ageDisplay.textContent = entry.age === 0 ? 'Birth Day! 🎂' : `Age ${entry.age}`;
-    
+
     const dateDisplay = document.createElement('p');
     dateDisplay.className = 'date-display';
     dateDisplay.textContent = entry.date;
-    
+
     const photoPlaceholder = document.createElement('div');
     photoPlaceholder.className = 'photo-placeholder';
     photoPlaceholder.innerHTML = `
         <img src="images/birthday-${entry.age}.jpg" alt="Birthday photo age ${entry.age}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
     `;
-    
+
     const messageArea = document.createElement('div');
     messageArea.className = 'message-area';
     messageArea.textContent = `Add your special memory or message for ${entry.age === 0 ? 'her birth' : 'age ' + entry.age} here...`;
-    
+
     // Add click handler for photo placeholder
     photoPlaceholder.addEventListener('click', () => {
         handlePhotoClick(entry.age);
     });
-    
+
     content.appendChild(yearBadge);
     content.appendChild(ageDisplay);
     content.appendChild(dateDisplay);
     content.appendChild(photoPlaceholder);
     content.appendChild(messageArea);
-    
+
     entryDiv.appendChild(marker);
     entryDiv.appendChild(content);
-    
+
     return entryDiv;
 }
 
@@ -239,7 +239,7 @@ function handlePhotoClick(age) {
 // Animate timeline entries on scroll
 function animateTimelineEntries() {
     const entries = document.querySelectorAll('.timeline-entry');
-    
+
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -251,7 +251,7 @@ function animateTimelineEntries() {
             threshold: 0.1,
             rootMargin: '50px'
         });
-        
+
         entries.forEach(entry => {
             observer.observe(entry);
         });
@@ -266,9 +266,9 @@ function animateTimelineEntries() {
 // Initialize floating confetti
 function initializeConfetti() {
     if (!confettiContainer) return;
-    
+
     createConfettiParticles();
-    
+
     // Recreate confetti every 10 seconds
     setInterval(createConfettiParticles, 10000);
 }
@@ -276,13 +276,13 @@ function initializeConfetti() {
 // Create confetti particles
 function createConfettiParticles() {
     if (!confettiContainer) return;
-    
+
     // Clear existing particles
     confettiContainer.innerHTML = '';
-    
+
     const particleCount = 20;
     const colors = ['#FFB6C1', '#DDA0DD', '#98FB98', '#87CEEB', '#F0E68C'];
-    
+
     for (let i = 0; i < particleCount; i++) {
         createConfettiParticle(colors[i % colors.length], i);
     }
@@ -291,21 +291,21 @@ function createConfettiParticles() {
 // Create a single confetti particle
 function createConfettiParticle(color, index) {
     if (!confettiContainer) return;
-    
+
     const particle = document.createElement('div');
     particle.className = 'confetti-particle';
     particle.style.backgroundColor = color;
     particle.style.left = Math.random() * 100 + '%';
     particle.style.animationDelay = (index * 0.3) + 's';
     particle.style.animationDuration = (3 + Math.random() * 2) + 's';
-    
+
     // Random shapes
     if (Math.random() > 0.5) {
         particle.style.borderRadius = '50%';
     }
-    
+
     confettiContainer.appendChild(particle);
-    
+
     // Remove particle after animation
     setTimeout(() => {
         if (particle && particle.parentNode) {
@@ -352,10 +352,10 @@ function addCustomStyles() {
 // Add parallax effect to timeline
 window.addEventListener('scroll', function() {
     if (!timelinePage || timelinePage.classList.contains('hidden')) return;
-    
+
     const scrolled = window.pageYOffset;
     const parallax = scrolled * 0.5;
-    
+
     const timelineMarkers = document.querySelectorAll('.timeline-marker');
     timelineMarkers.forEach((marker, index) => {
         if (marker) {
@@ -377,9 +377,9 @@ function createFloatingHearts() {
     heart.style.pointerEvents = 'none';
     heart.style.zIndex = '1';
     heart.style.animation = 'heartFloat 4s ease-in-out forwards';
-    
+
     document.body.appendChild(heart);
-    
+
     setTimeout(() => {
         if (heart && heart.parentNode) {
             heart.parentNode.removeChild(heart);
