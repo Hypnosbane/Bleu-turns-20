@@ -186,46 +186,52 @@ function createTimelineEntry(entry, index) {
     const entryDiv = document.createElement('div');
     entryDiv.className = 'timeline-entry';
     entryDiv.style.animationDelay = `${index * 0.1}s`;
-    
+
     const marker = document.createElement('div');
     marker.className = 'timeline-marker';
-    
+
     const content = document.createElement('div');
     content.className = 'timeline-content';
-    
+
     const yearBadge = document.createElement('span');
     yearBadge.className = 'year-badge';
     yearBadge.textContent = entry.year;
-    
+
     const ageDisplay = document.createElement('h3');
     ageDisplay.className = 'age-display';
     ageDisplay.textContent = entry.age === 0 ? 'Birth Day! 🎂' : `Age ${entry.age}`;
-    
+
     const dateDisplay = document.createElement('p');
     dateDisplay.className = 'date-display';
     dateDisplay.textContent = entry.date;
-    
+
     const photoPlaceholder = document.createElement('div');
     photoPlaceholder.className = 'photo-placeholder';
     photoPlaceholder.innerHTML = `
         <img src="images/birthday-${entry.age}.jpg" alt="Birthday photo age ${entry.age}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
     `;
-    
+
     const messageArea = document.createElement('div');
     messageArea.className = 'message-area';
     messageArea.textContent = `Add your special memory or message for ${entry.age === 0 ? 'her birth' : 'age ' + entry.age} here...`;
-        
+
+    // Add click handler for photo placeholder
+    photoPlaceholder.addEventListener('click', () => {
+        handlePhotoClick(entry.age);
+    });
+
     content.appendChild(yearBadge);
     content.appendChild(ageDisplay);
     content.appendChild(dateDisplay);
     content.appendChild(photoPlaceholder);
     content.appendChild(messageArea);
-    
+
     entryDiv.appendChild(marker);
     entryDiv.appendChild(content);
-    
+
     return entryDiv;
 }
+
 
     
     const messageArea = document.createElement('div');
