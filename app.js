@@ -5,29 +5,28 @@ const appData = {
     birthDate: "2005-10-06",
     password: "magic123",
     timeline: [
-    {"age": 20, "date": "October 6, 2025", "year": 2025},
-    {"age": 19, "date": "October 6, 2024", "year": 2024},
-    {"age": 18, "date": "October 6, 2023", "year": 2023},
-    {"age": 17, "date": "October 6, 2022", "year": 2022},
-    {"age": 16, "date": "October 6, 2021", "year": 2021},
-    {"age": 15, "date": "October 6, 2020", "year": 2020},
-    {"age": 14, "date": "October 6, 2019", "year": 2019},
-    {"age": 13, "date": "October 6, 2018", "year": 2018},
-    {"age": 12, "date": "October 6, 2017", "year": 2017},
-    {"age": 11, "date": "October 6, 2016", "year": 2016},
-    {"age": 10, "date": "October 6, 2015", "year": 2015},
-    {"age": 9, "date": "October 6, 2014", "year": 2014},
-    {"age": 8, "date": "October 6, 2013", "year": 2013},
-    {"age": 7, "date": "October 6, 2012", "year": 2012},
-    {"age": 6, "date": "October 6, 2011", "year": 2011},
-    {"age": 5, "date": "October 6, 2010", "year": 2010},
-    {"age": 4, "date": "October 6, 2009", "year": 2009},
-    {"age": 3, "date": "October 6, 2008", "year": 2008},
-    {"age": 2, "date": "October 6, 2007", "year": 2007},
-    {"age": 1, "date": "October 6, 2006", "year": 2006},
-    {"age": 0, "date": "October 6, 2005", "year": 2005}
-        ]
-
+        {"age": 20, "date": "October 6, 2025", "year": 2025},
+        {"age": 19, "date": "October 6, 2024", "year": 2024},
+        {"age": 18, "date": "October 6, 2023", "year": 2023},
+        {"age": 17, "date": "October 6, 2022", "year": 2022},
+        {"age": 16, "date": "October 6, 2021", "year": 2021},
+        {"age": 15, "date": "October 6, 2020", "year": 2020},
+        {"age": 14, "date": "October 6, 2019", "year": 2019},
+        {"age": 13, "date": "October 6, 2018", "year": 2018},
+        {"age": 12, "date": "October 6, 2017", "year": 2017},
+        {"age": 11, "date": "October 6, 2016", "year": 2016},
+        {"age": 10, "date": "October 6, 2015", "year": 2015},
+        {"age": 9, "date": "October 6, 2014", "year": 2014},
+        {"age": 8, "date": "October 6, 2013", "year": 2013},
+        {"age": 7, "date": "October 6, 2012", "year": 2012},
+        {"age": 6, "date": "October 6, 2011", "year": 2011},
+        {"age": 5, "date": "October 6, 2010", "year": 2010},
+        {"age": 4, "date": "October 6, 2009", "year": 2009},
+        {"age": 3, "date": "October 6, 2008", "year": 2008},
+        {"age": 2, "date": "October 6, 2007", "year": 2007},
+        {"age": 1, "date": "October 6, 2006", "year": 2006},
+        {"age": 0, "date": "October 6, 2005", "year": 2005}
+    ]
 };
 
 // Global variables
@@ -186,53 +185,30 @@ function createTimelineEntry(entry, index) {
     const entryDiv = document.createElement('div');
     entryDiv.className = 'timeline-entry';
     entryDiv.style.animationDelay = `${index * 0.1}s`;
-
+    
     const marker = document.createElement('div');
     marker.className = 'timeline-marker';
-
+    
     const content = document.createElement('div');
     content.className = 'timeline-content';
-
+    
     const yearBadge = document.createElement('span');
     yearBadge.className = 'year-badge';
     yearBadge.textContent = entry.year;
-
+    
     const ageDisplay = document.createElement('h3');
     ageDisplay.className = 'age-display';
     ageDisplay.textContent = entry.age === 0 ? 'Birth Day! 🎂' : `Age ${entry.age}`;
-
+    
     const dateDisplay = document.createElement('p');
     dateDisplay.className = 'date-display';
     dateDisplay.textContent = entry.date;
-
+    
     const photoPlaceholder = document.createElement('div');
     photoPlaceholder.className = 'photo-placeholder';
     photoPlaceholder.innerHTML = `
         <img src="images/birthday-${entry.age}.jpg" alt="Birthday photo age ${entry.age}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
     `;
-
-    const messageArea = document.createElement('div');
-    messageArea.className = 'message-area';
-    messageArea.textContent = `Add your special memory or message for ${entry.age === 0 ? 'her birth' : 'age ' + entry.age} here...`;
-
-    // Add click handler for photo placeholder
-    photoPlaceholder.addEventListener('click', () => {
-        handlePhotoClick(entry.age);
-    });
-
-    content.appendChild(yearBadge);
-    content.appendChild(ageDisplay);
-    content.appendChild(dateDisplay);
-    content.appendChild(photoPlaceholder);
-    content.appendChild(messageArea);
-
-    entryDiv.appendChild(marker);
-    entryDiv.appendChild(content);
-
-    return entryDiv;
-}
-
-
     
     const messageArea = document.createElement('div');
     messageArea.className = 'message-area';
