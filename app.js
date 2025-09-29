@@ -207,7 +207,7 @@ function createTimelineEntry(entry, index) {
     const photoPlaceholder = document.createElement('div');
     photoPlaceholder.className = 'photo-placeholder';
     photoPlaceholder.innerHTML = `
-        <img src="images/birthday-${entry.age}.jpg" alt="Birthday photo age ${entry.age}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+        <img src="images/birthday-${entry.age}.jpeg" alt="Birthday photo age ${entry.age}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
     `;
 
     const messageArea = document.createElement('div');
@@ -323,7 +323,7 @@ function addCustomStyles() {
             10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
             20%, 40%, 60%, 80% { transform: translateX(5px); }
         }
-        
+
         @keyframes heartFloat {
             0% {
                 transform: translateY(0) rotate(0deg);
@@ -337,11 +337,11 @@ function addCustomStyles() {
                 opacity: 0;
             }
         }
-        
+
         .hidden {
             display: none !important;
         }
-        
+
         html {
             scroll-behavior: smooth;
         }
