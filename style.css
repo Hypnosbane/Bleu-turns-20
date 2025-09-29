@@ -1089,20 +1089,25 @@ select.form-control {
 }
 
 .photo-placeholder {
-    width: 100%;
-    height: 200px;
+    display: inline-block; /* shrink container to fit image */
     background: var(--color-bg-2);
     border: 2px dashed var(--color-border);
     border-radius: var(--radius-base);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     margin-bottom: var(--space-16);
     position: relative;
     transition: all 0.3s ease;
     cursor: pointer;
+    padding: 0; /* remove fixed height */
 }
+
+.photo-placeholder img {
+    display: block; /* remove inline gap */
+    width: 100%; /* fill container width */
+    height: auto; /* keep aspect ratio */
+    object-fit: contain; /* preserve entire image */
+    border-radius: var(--radius-base);
+}
+
 
 .photo-placeholder:hover {
     background: var(--color-bg-3);
