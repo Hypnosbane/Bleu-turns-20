@@ -983,12 +983,14 @@ select.form-control {
 }
 
 .timeline-entry {
-    display: block;
+    display: flex;
+    flex-direction: row;
     margin-bottom: var(--space-32);
     position: relative;
     opacity: 0;
     animation: fadeInUp 0.8s ease forwards;
 }
+
 
 .timeline-entry:nth-child(even) {
     flex-direction: row-reverse;
@@ -1249,3 +1251,16 @@ select.form-control {
     margin-top: 0.5rem;
   }
 }
+
+@media (max-width: 768px) {
+  .timeline-content > .photo-placeholder,
+  .timeline-content > .featured-message {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  .timeline-content > .message-area {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}
+
