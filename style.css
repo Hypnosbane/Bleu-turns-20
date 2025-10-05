@@ -1225,3 +1225,17 @@ select.form-control {
     max-width: 100vw;
   }
 }
+
+.featured-message {
+    font-style: italic;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    font-size: 2rem;
+    background: linear-gradient(90deg, #ffe29f, #ffaf7b);
+    border-radius: 16px;
+    margin: 20px 0;
+    font-weight: bold;
+}
