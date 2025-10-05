@@ -3,7 +3,7 @@
 // Application data
 const appData = {
     birthDate: "2005-10-06",
-    password: "",
+    password: "0610",
     timeline: [
         {"age": 20, "date": "October 6, 2025", "year": 2025,"message":"A whole new decade awaits!"},
         {"age": 19, "date": "October 6, 2024", "year": 2024,"message":"The last birthday of your teens, a surprise from your new friends"},
