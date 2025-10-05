@@ -1239,3 +1239,13 @@ select.form-control {
     margin: 20px 0;
     font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  .timeline-content > .photo-placeholder,
+  .timeline-content > img {
+    margin-bottom: 1rem;
+  }
+  .timeline-content > .message-area {
+    margin-top: 0.5rem;
+  }
+}
