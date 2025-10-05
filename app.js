@@ -234,7 +234,7 @@ function createTimelineEntry(entry, index) {
 
     const messageArea = document.createElement('div');
     messageArea.className = 'message-area';
-    messageArea.textContent = `Add your special memory or message for ${entry.age === 0 ? 'her birth' : 'age ' + entry.age} here...`;
+   messageArea.textContent = entry.message || `Add your special memory or message for ${entry.age === 0 ? 'her birth' : 'age ' + entry.age} here...`;
 
     content.appendChild(yearBadge);
     content.appendChild(ageDisplay);
