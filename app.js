@@ -210,23 +210,27 @@ function createTimelineEntry(entry, index) {
         mediaBox = document.createElement('div');
         mediaBox.className = 'featured-message';
         mediaBox.textContent = '🎉 Happy 20th Birthday! 🎉';
-        mediaBox.style.fontStyle = 'italic';
-        mediaBox.style.textAlign = 'center';
-        mediaBox.style.display = 'flex';
-        mediaBox.style.alignItems = 'center';
-        mediaBox.style.justifyContent = 'center';
-        mediaBox.style.height = '200px';
-        mediaBox.style.fontSize = '2rem';
-        mediaBox.style.background = 'linear-gradient(90deg, #ffe29f, #ffaf7b)';
-        mediaBox.style.borderRadius = '16px';
-        mediaBox.style.margin = '20px 0';
-        mediaBox.style.fontWeight = 'bold';
     } else {
         mediaBox = document.createElement('div');
         mediaBox.className = 'photo-placeholder';
-        mediaBox.innerHTML = `
-            <img src="images/birthday-${entry.age}.jpeg" alt="Birthday photo age ${entry.age}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
-        `;
+        
+        // Create image element with proper styling for mobile
+        const img = document.createElement('img');
+        img.src = `images/birthday-${entry.age}.jpeg`;
+        img.alt = `Birthday photo age ${entry.age}`;
+        img.style.cssText = 'width: 100%; height: auto; display: block; border-radius: 8px; object-fit: cover; min-height: 120px; max-height: 210px;';
+        
+        // Handle image load error
+        img.onerror = function() {
+            this.style.display = 'none';
+            const placeholder = document.createElement('div');
+            placeholder.style.cssText = 'display: flex; align-items: center; justify-content: center; min-height: 120px; color: #666; font-style: italic;';
+            placeholder.textContent = `Photo for age ${entry.age} - Click to add`;
+            mediaBox.appendChild(placeholder);
+        };
+        
+        mediaBox.appendChild(img);
+        
         mediaBox.addEventListener('click', () => {
             handlePhotoClick(entry.age);
         });
@@ -234,7 +238,7 @@ function createTimelineEntry(entry, index) {
 
     const messageArea = document.createElement('div');
     messageArea.className = 'message-area';
-   messageArea.textContent = entry.message || `Add your special memory or message for ${entry.age === 0 ? 'her birth' : 'age ' + entry.age} here...`;
+    messageArea.textContent = entry.message || `Add your special memory or message for ${entry.age === 0 ? 'her birth' : 'age ' + entry.age} here...`;
 
     content.appendChild(yearBadge);
     content.appendChild(ageDisplay);
@@ -250,7 +254,7 @@ function createTimelineEntry(entry, index) {
 
 // Handle photo placeholder click
 function handlePhotoClick(age) {
-    alert(`To add photos for ${age === 0 ? 'birth day' : 'age ' + age}:\n\n1. Right-click the photo area\n2. Select "Inspect Element"\n3. Replace the photo-placeholder div with an <img> tag\n4. Add your image URL to the src attribute\n\nExample:\n<img src="your-photo.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">\n\nFor easier management, upload photos to a cloud service like Google Drive or Dropbox and use the direct links! 💕`);
+    alert(`To add photos for ${age === 0 ? 'birth day' : 'age ' + age}:\n\n1. Right-click the photo area\n2. Select "Inspect Element"\n3. Replace the photo-placeholder div with an <img> tag\n4. Add your image URL to the src attribute\n\nExample:\n<img src="your-photo.jpg" style="width: 100%; height: auto; object-fit: cover; border-radius: 8px;">\n\nFor easier management, upload photos to a cloud service like Google Drive or Dropbox and use the direct links! 💕`);
 }
 
 // Animate timeline entries on scroll
