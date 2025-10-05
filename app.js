@@ -204,23 +204,32 @@ function createTimelineEntry(entry, index) {
     dateDisplay.className = 'date-display';
     dateDisplay.textContent = entry.date;
 
-    const photoPlaceholder = document.createElement('div');
-    photoPlaceholder.className = 'photo-placeholder';
-
+    let mediaBox;
 if (entry.age === 20) {
-    // For 20th birthday, display message instead of image
-    photoPlaceholder.textContent = '🎉 Happy 20th Birthday! 🎉';
-    photoPlaceholder.style.fontStyle = 'italic';
-    photoPlaceholder.style.textAlign = 'center';
-    photoPlaceholder.style.padding = '20px';
-    photoPlaceholder.style.display = 'flex';
-    photoPlaceholder.style.alignItems = 'center';
-    photoPlaceholder.style.justifyContent = 'center';
-    photoPlaceholder.style.height = '200px'; // Optional, adjust to preferred height
+    // For 20th birthday, highlight with a special message box
+    mediaBox = document.createElement('div');
+    mediaBox.className = 'featured-message';
+    mediaBox.textContent = '🎉 Happy 20th Birthday! 🎉';
+    mediaBox.style.fontStyle = 'italic';
+    mediaBox.style.textAlign = 'center';
+    mediaBox.style.display = 'flex';
+    mediaBox.style.alignItems = 'center';
+    mediaBox.style.justifyContent = 'center';
+    mediaBox.style.height = '200px';
+    mediaBox.style.fontSize = '2rem';
+    mediaBox.style.background = 'linear-gradient(90deg, #ffe29f, #ffaf7b)';
+    mediaBox.style.borderRadius = '16px';
+    mediaBox.style.margin = '20px 0';
+    mediaBox.style.fontWeight = 'bold';
 } else {
-    photoPlaceholder.innerHTML = `
+    mediaBox = document.createElement('div');
+    mediaBox.className = 'photo-placeholder';
+    mediaBox.innerHTML = `
         <img src="images/birthday-${entry.age}.jpeg" alt="Birthday photo age ${entry.age}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
     `;
+    mediaBox.addEventListener('click', () => {
+        handlePhotoClick(entry.age);
+    });
 }
 
     const messageArea = document.createElement('div');
